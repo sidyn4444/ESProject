@@ -10,7 +10,19 @@ st.markdown(
     """
     <style>
     .stApp { background: #f5f8f8; color: #152b3c; }
-    h1, h2, h3 { color: #123047; }
+    h1, h2, h3 { color: #123047 !important; }
+    .stApp p, .stApp li, .stApp label,
+    .stApp [data-testid="stWidgetLabel"],
+    .stApp [data-testid="stWidgetLabel"] p,
+    .stApp [role="radiogroup"] label,
+    .stApp [role="radiogroup"] label p,
+    .stApp [data-testid="stMetricLabel"],
+    .stApp [data-testid="stMetricLabel"] *,
+    .stApp [data-testid="stMetricValue"],
+    .stApp [data-testid="stMetricValue"] *,
+    .stApp [data-baseweb="tab"] {
+        color: #152b3c !important;
+    }
     .intro { border-left: 5px solid #188b83; padding: .8rem 1rem;
              background: #e8f3f1; border-radius: 6px; }
     .fact { background: #fff0df; border-left: 5px solid #ee8b36;
@@ -158,22 +170,30 @@ with quiz_tab:
     st.header("Quick Quiz")
     st.write("See what stuck from the calculator and climate information.")
     questions = [
-        ("How can humidity affect how hot it feels?", ["It can make it feel hotter by slowing sweat evaporation.", "It always cools the air down.", "It has no effect."], 0,
+        ("How can humidity affect how hot it feels?", ["It always cools the air down.", "It can make it feel hotter by slowing sweat evaporation.", "It has no effect."], 1,
          "Humidity can slow the evaporation of sweat, one way the body cools itself."),
-        ("Why take breaks or reduce strenuous activity in extreme heat?", ["Rest breaks help lower heat strain and give you a chance to cool down.", "Breaks make the weather cooler.", "Exercise is always unsafe outdoors."], 0,
+        ("Why take breaks or reduce strenuous activity in extreme heat?", ["Breaks make the weather cooler.", "Exercise is always unsafe outdoors.", "Rest breaks help lower heat strain and give you a chance to cool down."], 2,
          "Physical activity adds heat stress, so breaks and cooler locations can help reduce exposure."),
-        ("Why can unreliable air conditioning increase heat risk?", ["It can limit access to a cooler place during hot weather.", "It changes the outdoor humidity.", "It makes every hot day dangerous."], 0,
+        ("Why can unreliable air conditioning increase heat risk?", ["It changes the outdoor humidity.", "It can limit access to a cooler place during hot weather.", "It makes every hot day dangerous."], 1,
          "People without reliable cooling may have fewer ways to escape indoor heat."),
     ]
     chosen = []
     for number, (prompt, options, _answer, _explanation) in enumerate(questions, start=1):
-        chosen.append(st.radio(prompt, options, key=f"quiz_{number}"))
+        chosen.append(st.radio(prompt, options, index=None, key=f"quiz_{number}"))
     if st.button("Check My Answers"):
-        score = sum(answer == questions[index][1][questions[index][2]] for index, answer in enumerate(chosen))
-        st.subheader(f"You got {score} out of {len(questions)} correct.")
-        for index, (prompt, options, correct_index, explanation) in enumerate(questions):
-            correct = chosen[index] == options[correct_index]
-            st.markdown(f"**{index + 1}. {'Correct' if correct else 'Not quite'}** — {explanation}")
+        if any(answer is None for answer in chosen):
+            st.warning("Please choose an answer for all three questions first.")
+        else:
+            score = sum(
+                answer == questions[index][1][questions[index][2]]
+                for index, answer in enumerate(chosen)
+            )
+            st.subheader(f"You got {score} out of {len(questions)} correct.")
+            for index, (prompt, options, correct_index, explanation) in enumerate(questions):
+                correct = chosen[index] == options[correct_index]
+                st.markdown(
+                    f"**{index + 1}. {'Correct' if correct else 'Not quite'}** — {explanation}"
+                )
 
 st.divider()
 st.caption(
