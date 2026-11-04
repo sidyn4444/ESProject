@@ -1,6 +1,6 @@
 # NC Heat Helper
 
-NC Heat Helper is a small Streamlit app about how temperature and humidity affect the heat index. I made it after noticing how hot and humid North Carolina felt, including later into Fall. It is for college students, friends, family, and other people who spend time outside.
+NC Heat Helper is a Streamlit app I made to show how temperature and humidity affect how hot it feels. I noticed North Carolina was hot and humid this summer, and it felt like the heat lasted into Fall. I wanted to make a program that has a real use and gives students, friends, and family some helpful tips for hot weather.
 
 ## Features
 
@@ -9,7 +9,7 @@ NC Heat Helper is a small Streamlit app about how temperature and humidity affec
 - Get heat-safety reminders that change with the category.
 - Read about North Carolina's long-term climate projection and take a three-question quiz.
 
-The app uses values selected by the user; it does not retrieve current weather. The heat index follows the National Weather Service simple formula and Rothfusz regression procedure, including its documented humidity adjustments. The calculator is educational, is not a safety guarantee, and does not replace official warnings or medical advice. Heat index is a shaded, light-wind estimate and does not capture all factors relevant to sports or strenuous work.
+The app uses numbers you choose; it does not check current weather. The heat index uses the National Weather Service simple formula and Rothfusz regression, including the documented humidity adjustments. This calculator is for learning and cannot guarantee that an activity is safe or replace official warnings or medical advice. The heat index assumes shade and light wind, and it does not include everything that matters for sports or hard physical activity.
 
 ## Run locally on macOS
 
@@ -47,7 +47,7 @@ python -m unittest -v test_heat_index.py
 - [NC Climate Science Report: Plain Language Summary (2020)](https://files.nc.gov/ncdeq/climate-change/climate-scinece-report/NC-Climate-Science-Report_Plain_Language_Summary.pdf)
 - [NC State Climate Office](https://climate.ncsu.edu/)
 
-The 6–10°F North Carolina figure is a projection of statewide average warming by the end of the century under the report's higher-emissions scenario. It is not a day-level forecast. The heat index demonstrates apparent temperature and does not itself prove climate change.
+The report says North Carolina's statewide average temperature could rise 6–10°F by the end of the century under its higher-emissions scenario. This is a long-term projection, not a forecast for one day. The heat index shows how temperature and humidity affect how hot it feels; it does not prove climate change by itself.
 
 ## Deploy to Streamlit Community Cloud
 
@@ -57,7 +57,7 @@ The 6–10°F North Carolina figure is a projection of statewide average warming
 4. Deploy. Once it finishes, use the `.streamlit.app` link shown by Streamlit.
 5. Open that URL in a private/incognito browser window to check what a visitor can access.
 
-The app has no API keys or account system. A public GitHub repository and a public Streamlit app are needed for an instructor to open the app without signing in. Confirm the sharing/public settings in Streamlit before sharing the URL. No repository or app has been published from this workspace.
+The app has no API keys or account system. A public GitHub repository and a public Streamlit app let an instructor open it without signing in. The code is in GitHub and the app is deployed on Streamlit, but check the app's access setting before sharing so anyone with the link can open it.
 
 ## Files
 

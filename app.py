@@ -50,8 +50,8 @@ calculator_tab, why_tab, quiz_tab = st.tabs(
 with calculator_tab:
     st.header("Try the heat index calculator")
     st.write(
-        "Move the sliders to see how air temperature and humidity work together. "
-        "These are values you choose; this app does not retrieve current weather."
+        "Change the sliders to see how temperature and humidity work together. "
+        "These are numbers you enter yourself; the app does not show current weather."
     )
     left, right = st.columns(2)
     with left:
@@ -66,23 +66,24 @@ with calculator_tab:
     metric_b.metric("Relative humidity", f"{humidity}%")
     metric_c.metric("Calculated heat index", f"{heat_index:.1f}°F", category)
     st.markdown(
-        f"### At {temperature}°F with {humidity}% humidity, it feels like about "
+        f"### So at {temperature}°F with {humidity}% humidity, it feels like around "
         f"**{heat_index:.0f}°F**."
     )
     if heat_index >= 125:
         st.warning(
-            "This is a very high heat-index value. At extreme temperature and humidity "
-            "combinations, the regression may be unreliable beyond the conditions in "
-            "the data used to build it. Follow official local warnings and do not use "
-            "this number by itself to make a safety decision."
+            "That is a very high heat-index number. With extreme heat and humidity, "
+            "this formula can go beyond the conditions used to build it, so the result "
+            "may be less reliable. Follow local weather alerts, and do not use this "
+            "number by itself to decide if it is safe outside."
         )
 
     st.markdown("#### What this number means")
     st.write(
-        "Heat index combines air temperature and relative humidity to estimate the "
-        "apparent temperature in shady conditions with light wind. Direct sunlight, "
-        "physical activity, clothing, health, and other factors can increase heat risk. "
-        "This educational calculator cannot tell you that an outdoor activity is safe."
+        "The heat index shows how hot it feels when you look at temperature and "
+        "humidity together instead of looking at temperature by itself. It is based "
+        "on shady conditions with light wind. Direct sun, being active, clothing, "
+        "health, and other things can add to the heat risk, so this number alone "
+        "cannot tell you if it is safe to be outside."
     )
 
     st.markdown("#### How humidity changes the heat index")
@@ -95,33 +96,34 @@ with calculator_tab:
     chart = pd.DataFrame(chart_rows, index=chart_index)
     chart.index.name = "Relative Humidity (%)"
     st.line_chart(chart)
-    st.caption(f"Selected point: {humidity}% humidity → {heat_index:.1f}°F heat index.")
+    st.caption(f"Your selected point: {humidity}% humidity → {heat_index:.1f}°F heat index.")
     st.caption(
-        "Even when the temperature stays the same, having more humidity in the air "
-        "can make it feel hotter. This is why really humid summer days in North "
-        "Carolina can become uncomfortable or dangerous."
+        "This graph shows that even if the temperature stays the same, more humidity "
+        "can make it feel a lot hotter outside. That is something I noticed this "
+        "summer in North Carolina."
     )
     compare_low = calculate_heat_index(temperature, 30)
     compare_high = calculate_heat_index(temperature, 80)
     st.info(
-        f"At {temperature}°F, the estimated heat index is {compare_low:.0f}°F at "
-        f"30% humidity and {compare_high:.0f}°F at 80% humidity."
+        f"At {temperature}°F, it feels like around {compare_low:.0f}°F with 30% "
+        f"humidity and around {compare_high:.0f}°F with 80% humidity."
     )
 
     st.markdown("#### A few ways to lower your risk")
     recommendations = {
-        "Below caution": ["Keep water nearby and check the local forecast before heading out."],
-        "Caution": ["Drink water regularly.", "Take breaks and look for shade during longer outdoor activities."],
-        "Extreme Caution": ["Plan walks or sports for cooler hours if possible.", "Take frequent breaks in shade or an air-conditioned place.", "Check in with friends and family."],
-        "Danger": ["Reduce strenuous outdoor activity and take frequent cooling breaks.", "Use an air-conditioned location when you can.", "Pay attention to how you and people around you feel."],
-        "Extreme Danger": ["Avoid strenuous outdoor activity where possible.", "Spend time in a cool or air-conditioned place.", "Check on others and follow local weather alerts."],
+        "Below caution": ["Keep some water nearby and check the forecast before you go outside."],
+        "Caution": ["Drink water regularly.", "If you are outside for a while, take breaks and find some shade."],
+        "Extreme Caution": ["If you can, walk or play sports during the cooler parts of the day.", "Take frequent breaks in the shade or somewhere with AC.", "Check in on friends and family."],
+        "Danger": ["Cut back on hard outdoor activity and take frequent breaks to cool down.", "Go somewhere with AC when you can.", "Pay attention to how you feel and check on people around you."],
+        "Extreme Danger": ["Avoid strenuous outdoor activity.", "Spend time somewhere cool or air-conditioned.", "Check on others and follow local weather alerts."],
     }
     for tip in recommendations[category]:
         st.markdown(f"- {tip}")
     st.markdown(
-        "Not everyone has reliable or affordable air conditioning. Community cooling "
-        "spaces and checking on neighbors can matter during hot weather. Find local "
-        "resources through your county or health department."
+        "On top of that, not everyone can afford to keep their AC running all the time, "
+        "so some people may have a harder time staying cool when it is really hot. "
+        "Check what cooling spaces are available through your county or health "
+        "department, and check in on people around you."
     )
     st.markdown(
         "Sources: [National Weather Service heat index equation]"
@@ -133,18 +135,20 @@ with calculator_tab:
 with why_tab:
     st.header("Why This Matters in North Carolina")
     st.write(
-        "I started thinking about this because the heat and humidity seemed to last "
-        "later into the year. Hot days can make time outdoors harder, and warmer "
-        "nights can give people less relief after a hot day. Humidity can make it "
-        "harder for the body to cool itself, while access to air conditioning is not "
-        "the same for everyone."
+        "This summer I noticed how hot and humid it was getting in North Carolina, "
+        "and it even felt like the heat lasted into Fall. I think most people know it "
+        "gets hot here, but they may not know how humidity adds to the heat risk. "
+        "Warmer nights can also give people less time to cool down after a hot day. "
+        "This worries me because it can make it harder for me, my loved ones, and "
+        "other people to spend time outside, especially if they cannot afford to keep "
+        "their home cool with AC."
     )
     st.markdown(
         '<div class="fact"><strong>If emissions keep rising quickly, North Carolina '
-        'could warm another 6 to 10°F by 2100.</strong><br><br>This is a projection '
-        'for statewide average temperature under a higher-emissions scenario in the '
-        '2020 North Carolina Climate Science Report. It is a long-term projection, '
-        'not a forecast for one day.</div>',
+        'could warm another 6 to 10°F by 2100.</strong><br><br>The report projects '
+        'this change in the statewide average temperature under a higher-emissions '
+        'scenario. It is a long-term projection, not a guarantee or a forecast for '
+        'one day.</div>',
         unsafe_allow_html=True,
     )
     st.markdown(
@@ -154,28 +158,28 @@ with why_tab:
         "[NC State Climate Office](https://climate.ncsu.edu/)"
     )
     st.info(
-        "The calculator shows how temperature and humidity affect apparent "
-        "temperature. The climate report is evidence about long-term climate change. "
-        "The calculator itself does not prove climate change."
+        "The calculator shows how temperature and humidity affect how hot it feels. "
+        "The climate report is about long-term changes in climate. The calculator "
+        "does not prove climate change by itself."
     )
     st.subheader("What Can We Do?")
     st.markdown(
-        "- Talk with friends and family about climate change and share heat-safety information.\n"
-        "- Check on people during hot weather and support access to community cooling resources.\n"
-        "- Learn about practical ways to reduce greenhouse gas emissions, including choices we can make together.\n"
-        "- Share NC Heat Helper with someone who spends time outside."
+        "- Talk to friends and family about climate change and share what you learned about heat safety.\n"
+        "- Check in on people during hot weather and support local cooling spaces.\n"
+        "- Learn about ways we can lower greenhouse gas emissions, both on our own and together.\n"
+        "- Try NC Heat Helper and share it with friends or family."
     )
 
 with quiz_tab:
     st.header("Quick Quiz")
-    st.write("See what stuck from the calculator and climate information.")
+    st.write("Now that you have seen how the heat index works, try these questions and see what you learned.")
     questions = [
-        ("How can humidity affect how hot it feels?", ["It always cools the air down.", "It can make it feel hotter by slowing sweat evaporation.", "It has no effect."], 1,
-         "Humidity can slow the evaporation of sweat, one way the body cools itself."),
-        ("Why take breaks or reduce strenuous activity in extreme heat?", ["Breaks make the weather cooler.", "Exercise is always unsafe outdoors.", "Rest breaks help lower heat strain and give you a chance to cool down."], 2,
-         "Physical activity adds heat stress, so breaks and cooler locations can help reduce exposure."),
-        ("Why can unreliable air conditioning increase heat risk?", ["It changes the outdoor humidity.", "It can limit access to a cooler place during hot weather.", "It makes every hot day dangerous."], 1,
-         "People without reliable cooling may have fewer ways to escape indoor heat."),
+        ("What can humidity do to how hot it feels outside?", ["It always makes the air feel cooler.", "It can make it feel hotter because sweat does not evaporate as easily.", "It does not change how hot it feels."], 1,
+         "Humidity makes it harder for sweat to evaporate, which is one way your body cools itself."),
+        ("Why should you take breaks or slow down when it is extremely hot?", ["Breaks make the air cooler.", "Outdoor exercise is always unsafe in summer.", "Taking breaks gives you time to cool down and can lower heat strain."], 2,
+         "Being active adds to the heat your body is dealing with, so breaks can help lower that strain."),
+        ("Why can people without reliable AC have a harder time during extreme heat?", ["It changes the outdoor humidity.", "They may have fewer ways to get somewhere cool.", "It makes every hot day dangerous."], 1,
+         "Without reliable AC, people may have fewer ways to get away from indoor heat."),
     ]
     chosen = []
     for number, (prompt, options, _answer, _explanation) in enumerate(questions, start=1):
@@ -197,8 +201,8 @@ with quiz_tab:
 
 st.divider()
 st.caption(
-    "This app is for educational purposes and does not replace official weather "
-    "warnings or medical advice. The general heat index does not account for every "
-    "factor that matters during sports and physical activity; use official guidance "
-    "and more complete heat-stress measurements when appropriate."
+    "This app is for learning and does not replace official weather warnings or "
+    "medical advice. The heat index does not include everything that matters for "
+    "sports or hard physical activity, so use official guidance and a more complete "
+    "heat-stress measure when one is needed."
 )
