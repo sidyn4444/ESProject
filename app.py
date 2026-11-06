@@ -51,7 +51,7 @@ with calculator_tab:
     st.header("Try the heat index calculator")
     st.write(
         "Change the sliders to see how temperature and humidity work together. "
-        "These are numbers you enter yourself; the app does not show current weather."
+        "These are numbers you enter yourself; the app doesn't show current weather."
     )
     left, right = st.columns(2)
     with left:
@@ -73,8 +73,8 @@ with calculator_tab:
         st.warning(
             "That is a very high heat-index number. With extreme heat and humidity, "
             "this formula can go beyond the conditions used to build it, so the result "
-            "may be less reliable. Follow local weather alerts, and do not use this "
-            "number by itself to decide if it is safe outside."
+            "might be less reliable. Follow local weather alerts, and don't use this "
+            "number by itself to decide if it's safe outside."
         )
 
     st.markdown("#### What this number means")
@@ -83,7 +83,7 @@ with calculator_tab:
         "humidity together instead of looking at temperature by itself. It is based "
         "on shady conditions with light wind. Direct sun, being active, clothing, "
         "health, and other things can add to the heat risk, so this number alone "
-        "cannot tell you if it is safe to be outside."
+        "can't tell you if it's safe to be outside."
     )
 
     st.markdown("#### How humidity changes the heat index")
@@ -112,7 +112,7 @@ with calculator_tab:
     st.markdown("#### A few ways to lower your risk")
     recommendations = {
         "Below caution": ["Keep some water nearby and check the forecast before you go outside."],
-        "Caution": ["Drink water regularly.", "If you are outside for a while, take breaks and find some shade."],
+        "Caution": ["Drink water regularly.", "If you're outside for a while, take breaks and find some shade."],
         "Extreme Caution": ["If you can, walk or play sports during the cooler parts of the day.", "Take frequent breaks in the shade or somewhere with AC.", "Check in on friends and family."],
         "Danger": ["Cut back on hard outdoor activity and take frequent breaks to cool down.", "Go somewhere with AC when you can.", "Pay attention to how you feel and check on people around you."],
         "Extreme Danger": ["Avoid strenuous outdoor activity.", "Spend time somewhere cool or air-conditioned.", "Check on others and follow local weather alerts."],
@@ -121,7 +121,7 @@ with calculator_tab:
         st.markdown(f"- {tip}")
     st.markdown(
         "On top of that, not everyone can afford to keep their AC running all the time, "
-        "so some people may have a harder time staying cool when it is really hot. "
+        "so some people might have a harder time staying cool when it's really hot. "
         "Check what cooling spaces are available through your county or health "
         "department, and check in on people around you."
     )
@@ -137,10 +137,10 @@ with why_tab:
     st.write(
         "This summer I noticed how hot and humid it was getting in North Carolina, "
         "and it even felt like the heat lasted into Fall. I think most people know it "
-        "gets hot here, but they may not know how humidity adds to the heat risk. "
+        "gets hot here, but they might not know how humidity adds to the heat risk. "
         "Warmer nights can also give people less time to cool down after a hot day. "
         "This worries me because it can make it harder for me, my loved ones, and "
-        "other people to spend time outside, especially if they cannot afford to keep "
+        "other people to spend time outside, especially if they can't afford to keep "
         "their home cool with AC."
     )
     st.markdown(
@@ -160,7 +160,7 @@ with why_tab:
     st.info(
         "The calculator shows how temperature and humidity affect how hot it feels. "
         "The climate report is about long-term changes in climate. The calculator "
-        "does not prove climate change by itself."
+        "doesn't prove climate change by itself."
     )
     st.subheader("What Can We Do?")
     st.markdown(
@@ -174,12 +174,12 @@ with quiz_tab:
     st.header("Quick Quiz")
     st.write("You have seen how humidity can change how hot it feels. Try these questions and see what you think.")
     questions = [
-        ("What can humidity do to how hot it feels outside?", ["Humidity always makes the air feel cooler.", "Humidity can make it feel hotter because sweat does not dry as fast.", "Humidity does not affect how hot it feels."], 1,
+        ("What can humidity do to how hot it feels outside?", ["Humidity always makes the air feel cooler.", "Humidity can make it feel hotter because sweat doesn't dry as fast.", "Humidity doesn't affect how hot it feels."], 1,
          "Humidity makes it harder for sweat to evaporate, which is one way your body cools itself."),
-        ("Why should you take breaks or slow down when it is extremely hot?", ["Taking a break makes the air cooler.", "It is always unsafe to exercise outside in summer.", "Taking breaks gives your body time to cool down and can lower heat strain."], 2,
+        ("Why should you take breaks or slow down when it's extremely hot?", ["Taking a break makes the air cooler.", "It's always unsafe to exercise outside in summer.", "Taking breaks gives your body time to cool down and can lower heat strain."], 2,
          "Being active adds to the heat your body is dealing with, so breaks can help lower that strain."),
-        ("Why can people without reliable AC have a harder time during extreme heat?", ["It changes the humidity outside.", "They may not have an easy place to cool down.", "It makes every hot day dangerous."], 1,
-         "Without reliable AC, people may have fewer ways to get away from indoor heat."),
+        ("Why can people without reliable AC have a harder time during extreme heat?", ["It changes the humidity outside.", "They might not have an easy place to cool down.", "It makes every hot day dangerous."], 1,
+         "Without reliable AC, people might have fewer ways to get away from indoor heat."),
     ]
     chosen = []
     for number, (prompt, options, _answer, _explanation) in enumerate(questions, start=1):
@@ -201,8 +201,8 @@ with quiz_tab:
 
 st.divider()
 st.caption(
-    "This app is for learning and does not replace official weather warnings or "
-    "medical advice. The heat index does not include everything that matters for "
+    "This app is for learning and doesn't replace official weather warnings or "
+    "medical advice. The heat index doesn't include everything that matters for "
     "sports or hard physical activity, so use official guidance and a more complete "
     "heat-stress measure when one is needed."
 )

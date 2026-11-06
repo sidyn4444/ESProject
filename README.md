@@ -9,7 +9,7 @@ NC Heat Helper is a Streamlit app I made to show how temperature and humidity af
 - Get heat-safety reminders that change with the category.
 - Read about North Carolina's long-term climate projection and take a three-question quiz.
 
-The app uses numbers you choose; it does not check current weather. The heat index uses the National Weather Service simple formula and Rothfusz regression, including the documented humidity adjustments. This calculator is for learning and cannot guarantee that an activity is safe or replace official warnings or medical advice. The heat index assumes shade and light wind, and it does not include everything that matters for sports or hard physical activity.
+The app uses numbers you choose; it doesn't check current weather. The heat index uses the National Weather Service simple formula and Rothfusz regression, including the documented humidity adjustments. This calculator is for learning and can't guarantee that an activity is safe or replace official warnings or medical advice. The heat index assumes shade and light wind, and it doesn't include everything that matters for sports or hard physical activity.
 
 ## Run locally on macOS
 
@@ -47,7 +47,7 @@ python -m unittest -v test_heat_index.py
 - [NC Climate Science Report: Plain Language Summary (2020)](https://files.nc.gov/ncdeq/climate-change/climate-scinece-report/NC-Climate-Science-Report_Plain_Language_Summary.pdf)
 - [NC State Climate Office](https://climate.ncsu.edu/)
 
-The report says North Carolina's statewide average temperature could rise 6–10°F by the end of the century under its higher-emissions scenario. This is a long-term projection, not a forecast for one day. The heat index shows how temperature and humidity affect how hot it feels; it does not prove climate change by itself.
+The report says North Carolina's statewide average temperature could rise 6–10°F by the end of the century under its higher-emissions scenario. This is a long-term projection, not a forecast for one day. The heat index shows how temperature and humidity affect how hot it feels; it doesn't prove climate change by itself.
 
 ## Deploy to Streamlit Community Cloud
 
