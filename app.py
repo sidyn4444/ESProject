@@ -172,13 +172,13 @@ with why_tab:
 
 with quiz_tab:
     st.header("Quick Quiz")
-    st.write("Now that you have seen how the heat index works, try these questions and see what you learned.")
+    st.write("You have seen how humidity can change how hot it feels. Try these questions and see what you think.")
     questions = [
-        ("What can humidity do to how hot it feels outside?", ["It always makes the air feel cooler.", "It can make it feel hotter because sweat does not evaporate as easily.", "It does not change how hot it feels."], 1,
+        ("What can humidity do to how hot it feels outside?", ["Humidity always makes the air feel cooler.", "Humidity can make it feel hotter because sweat does not dry as fast.", "Humidity does not affect how hot it feels."], 1,
          "Humidity makes it harder for sweat to evaporate, which is one way your body cools itself."),
-        ("Why should you take breaks or slow down when it is extremely hot?", ["Breaks make the air cooler.", "Outdoor exercise is always unsafe in summer.", "Taking breaks gives you time to cool down and can lower heat strain."], 2,
+        ("Why should you take breaks or slow down when it is extremely hot?", ["Taking a break makes the air cooler.", "It is always unsafe to exercise outside in summer.", "Taking breaks gives your body time to cool down and can lower heat strain."], 2,
          "Being active adds to the heat your body is dealing with, so breaks can help lower that strain."),
-        ("Why can people without reliable AC have a harder time during extreme heat?", ["It changes the outdoor humidity.", "They may have fewer ways to get somewhere cool.", "It makes every hot day dangerous."], 1,
+        ("Why can people without reliable AC have a harder time during extreme heat?", ["It changes the humidity outside.", "They may not have an easy place to cool down.", "It makes every hot day dangerous."], 1,
          "Without reliable AC, people may have fewer ways to get away from indoor heat."),
     ]
     chosen = []
